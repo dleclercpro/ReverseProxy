@@ -37,7 +37,13 @@ Set the following environment variables in a `.env` file:
   ```
 - **Run Docker Container**:
   ```
-  docker run -d -p 80:80 -p 443:443 --env DOMAIN=[your-domain] --env EMAIL=[your-email] --env PROXY_URL=[your-proxy-url] nginx-reverse-proxy
+  docker run -d \
+  -p 80:80 \
+  -p 443:443 \
+  --env DOMAIN=[your-domain] \
+  --env EMAIL=[your-email] \
+  --env PROXY_URL=[your-proxy-url] \
+  nginx-reverse-proxy
   ```
 
 5. **Verify Operation**:
