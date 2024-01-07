@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: ssl-reverse-proxy
+    image: dleclercpro/ssl-reverse-proxy:latest
+    restart: no
+    ports:
+      - 443:443 # HTTPS
+      - 80:80   # HTTP
+    volumes:
+      - letsencrypt:/etc/letsencrypt
+    env_file:
+      - .env
+
+volumes:
+  letsencrypt:
