@@ -13,7 +13,7 @@ This repository contains a Dockerized NGINX setup designed for secure web applic
 ## How to Run
 1. **Clone the Repository**:
 ```
-git clone [repository-url]
+git clone https://github.com/dleclercpro/SSLReverseProxy
 ```
 
 2. **Set Environment Variables**:
