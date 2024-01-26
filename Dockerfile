@@ -18,7 +18,7 @@ RUN apt-get clean && \
 RUN mkdir -p /var/www/html
 
 # Copy NGINX configuration files over to image
-COPY ./Conf/nginx.init.conf ./Conf/nginx.conf /usr/share/nginx
+COPY ./Conf/nginx.init.conf ./Conf/nginx.conf /usr/share/nginx/
 
 # Entrypoint script to start NGINX and Certbot
 COPY ./Scripts/entrypoint.sh /usr/local/bin/entrypoint.sh
