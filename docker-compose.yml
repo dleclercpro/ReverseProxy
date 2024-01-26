@@ -3,7 +3,7 @@ version: '3.8'
 services:
   app:
     container_name: ssl-reverse-proxy
-    image: dleclercpro/ssl-reverse-proxy:wss
+    image: dleclercpro/ssl-reverse-proxy:v1.1.0
     restart: no
     ports:
       - 443:443 # HTTPS
