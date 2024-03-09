@@ -10,8 +10,10 @@ services:
       - 80:80   # HTTP
     volumes:
       - letsencrypt:/etc/letsencrypt
+      - dhparams:/usr/dhparams
     env_file:
       - .env
 
 volumes:
   letsencrypt:
+  dhparams:

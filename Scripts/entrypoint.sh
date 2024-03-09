@@ -34,9 +34,10 @@ LE_WEBROOT_DIR="/var/www/html"                                           # ACME 
 LE_CERTS_DIR="$LE_DIR/live/$DOMAIN"                                      # Live location of SSL certificates
 
 # Diffie-Hellman parameters
-DH_PARAMS_DIR=$NGINX_CONF_DIR
-DH_PARAMS_FILE="$DH_PARAMS_DIR/dhparam.pem"
-DH_PARAMS_SIZE=1024                                                      # Key size (# of bits)
+DH_PARAMS_DIR="/usr/dhparams"                                            # Directory for storing DH parameters
+DH_PARAMS_FILE="$DH_PARAMS_DIR/dhparam.pem"                              # DH parameters file path
+DH_PARAMS_SIZE=1024                                                      # Key size (# of bits) - increased to 2048 for better security
+
 # -------------------------------------------------------------------------------------------------------------- #
 
 
@@ -83,6 +84,18 @@ generate_final_conf() {
 }
 
 
+# Function to check and generate Diffie-Hellman parameters
+check_and_generate_dh_params() {
+    if [ ! -f "$DH_PARAMS_FILE" ]; then
+        echo "Diffie-Hellman parameters file does not exist, generating..."
+        mkdir -p "$DH_PARAMS_DIR"
+        openssl dhparam -out "$DH_PARAMS_FILE" $DH_PARAMS_SIZE
+    else
+        echo "Diffie-Hellman parameters file already exists, skipping generation."
+    fi
+}
+
+
 # Function to renew certificates
 renew_ssl_certs() {
     echo "Renewing SSL certificates..."
@@ -106,14 +119,6 @@ generate_ssl_certs() {
 }
 
 
-# Function to generate a Diffie-Hellman parameter file
-generate_dh_params() {
-    openssl dhparam -out "$DH_PARAMS_FILE" $DH_PARAMS_SIZE
-}
-
-
-
-
 # Generate initial configuration
 generate_init_conf
 
@@ -123,8 +128,8 @@ nginx -g "daemon off;" -c "$NGINX_CONF_FILE" &
 # Wait for a brief moment to ensure NGINX is up
 sleep 5
 
-# Generate new Diffie-Hellman parameters file
-generate_dh_params
+# Check and generate Diffie-Hellman parameters
+check_and_generate_dh_params
 
 # Obtain SSL certificate
 generate_ssl_certs
