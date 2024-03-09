@@ -5,7 +5,7 @@ dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Define image variables
 user="dleclercpro"
-app="ssl-reverse-proxy"
+app="reverse-proxy"
 release="latest"
 
 # Build a cross-platform image and push it to Dockerhub
