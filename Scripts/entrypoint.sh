@@ -36,7 +36,7 @@ LE_CERTS_DIR="$LE_DIR/live/$DOMAIN"                                      # Live 
 # Diffie-Hellman parameters
 DH_PARAMS_DIR="/usr/dhparams"                                            # Directory for storing DH parameters
 DH_PARAMS_FILE="$DH_PARAMS_DIR/dhparam.pem"                              # DH parameters file path
-DH_PARAMS_SIZE=1024                                                      # Key size (# of bits) - increased to 2048 for better security
+DH_PARAMS_SIZE=2048                                                      # Key size (# of bits) - increased to 2048 for better security
 
 # -------------------------------------------------------------------------------------------------------------- #
 
