@@ -36,7 +36,7 @@ LE_CERTS_DIR="$LE_DIR/live/$DOMAIN"                                      # Live 
 # Diffie-Hellman parameters
 DH_PARAMS_DIR=$NGINX_CONF_DIR
 DH_PARAMS_FILE="$DH_PARAMS_DIR/dhparam.pem"
-DH_PARAMS_SIZE=2048                                                      # Key size (# of bits)
+DH_PARAMS_SIZE=1024                                                      # Key size (# of bits)
 # -------------------------------------------------------------------------------------------------------------- #
 
 
